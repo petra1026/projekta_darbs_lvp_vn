@@ -1,0 +1,60 @@
+body {
+    background-color: rgb(255, 237, 214);
+}
+  
+.table-gap {
+    margin-bottom: 20px;
+}
+  
+.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+  
+.nav-buttons {
+    margin: 2rem 0;
+}
+  
+.nav-buttons .btn {
+    margin: 0.5rem;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+  
+table th,
+table td {
+    border: 1px solid black;
+    padding: 8px;
+}
+  
+table th {
+    background-color: darkseagreen;
+}
+
+.bg-success-light {
+    background-color: rgba(25, 135, 84, 0.25);
+}
+  
+
+@media (max-width: 768px) {
+    .center {
+      width: 90%;
+}
+  
+.nav-buttons .btn {
+      display: block;
+      width: 100%;
+      margin: 0.25rem 0;
+}
+  
+table {
+      font-size: 0.9rem;
+    }
+}
+  
+  
