@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect,url_for, session, jsonify
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from flask_sqlalchemy import SQLAlchemy 
 from werkzeug.security import generate_password_hash, check_password_hash
 import os 
@@ -12,7 +12,7 @@ db =  SQLAlchemy(app)
 
 #Datubāzes modelis
 class User(db.Model):
-    id = db.Column(db.Integer, pirmary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password_hash = db.Column(db.String(120), nullable=False)
     is_editor = db.Column(db.Boolean, default=False)
@@ -58,8 +58,7 @@ def register():
     username = request.json.get('username')
     password = request.json.get('password')
 
-    if User.query.filter_by
-    (username=username).first():
+    if User.query.filter_by(username=username).first():
         return jsonify({'success': False, 'message': 'Lietotājvārds jau eksistē!'})
 
     password_hash = generate_password_hash(password)

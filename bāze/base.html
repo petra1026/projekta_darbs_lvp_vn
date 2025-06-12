@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Palīgs.lv{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Galvene -->
+    <div class="text-bg-success p-3">
+        <div class="container">
+            <div class="row p-3">
+                <div class="col">
+                    <h1 class="text-center">{% block header %}Latviešu valodas palīgs - valodniecības nozarēs{% endblock %}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login poga -->
+     <div class="position-absolute top-0 end-0 p-3">
+            {% if session.username %}
+                <span class="text-white me-3">Sveiki, {{ session.username }}!</span>
+                <a href="{{ url_for('logout') }}" class="btn btn-outline-light btn-sm">Iziet</a>
+            {% else %}
+                <button class="btn btn-outline-light btn-sm" onclick="showLoginModal()">Ieiet</button>
+            {% endif %}
+        </div>
+    </div>
+    
+    {% block content %}{% endblock %}
+
+    <!-- Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ielogošanās</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Lietotājvārds:</label>
+                            <input type="text" class="form-control" id="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Parole:</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">Ieiet</button>
+                            <button type="button" class="btn btn-outline-secondary" onclick="showRegisterForm()">Reģistrēties</button>
+                        </div>
+                    </form>
+                    
+                    <!-- Reģistrācijas forma -->
+                    <form id="registerForm" style="display: none;">
+                        <div class="mb-3">
+                            <label for="regUsername" class="form-label">Lietotājvārds:</label>
+                            <input type="text" class="form-control" id="regUsername" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="regPassword" class="form-label">Parole:</label>
+                            <input type="password" class="form-control" id="regPassword" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Reģistrēties</button>
+                            <button type="button" class="btn btn-outline-secondary" onclick="showLoginForm()">Atpakaļ uz ielogošanos</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+</body>
+</html>

@@ -1,21 +1,16 @@
 function showLoginModal() {
-    const modal = new bootstrap.Modal(document.
-        getElementById("loginModal"))
+    const modal = new bootstrap.Modal(document.getElementById("loginModal"))
         modal.show()
 }
 
 function showRegisterform() {
-    document.getElementById("loginForm").style.
-    display = "none"
-    document.getElementById("registerForm").
-    style.display = "block"
+    document.getElementById("loginForm").style.display = "none"
+    document.getElementById("registerForm").style.display = "block"
 }
 
 function showLoginForm() {
-    document.getElementById("registerForm").
-    style.display = "none"
-    document.getElementById("loginForm").style. 
-    display = "block"
+    document.getElementById("registerForm").style.display = "none"
+    document.getElementById("loginForm").style.display = "block"
 }
 
 //Ielogošanās
@@ -23,10 +18,8 @@ document.getElementById("registerForm").
 addEventListener("submit", async (e)) ;{
     e.preventDefault()
 
-    const username = document.getElementById
-    ("username").value 
-    const password = document.getElementById
-    ("password").value 
+    const username = document.getElementById("username").value 
+    const password = document.getElementById("password").value 
 
     try {
         const response = await fetch("/login", {
@@ -51,14 +44,11 @@ addEventListener("submit", async (e)) ;{
     }
 
 // Reģistrācija
-document.getElementById("registerForm"). 
-addEventListener("submit", async (e)) ;{
+document.getElementById("registerForm").addEventListener("submit", async (e)) ;{
     e.preventDefault()
 
-    const username = document.getElementById
-    ("regUsername").value 
-    const password = document.getElementById
-    ("regPassword").value 
+    const username = document.getElementById("regUsername").value 
+    const password = document.getElementById("regPassword").value 
 
     try {
         const response = await fetch("/register", {
