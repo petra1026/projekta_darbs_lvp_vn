@@ -46,7 +46,8 @@ def login():
         session['username'] = user.username
         session['is_editor'] = user.is_editor
         return jsonify({'success': True, 'message': 'Sekmīgi ielogojāties!'})
-        else: return jsonify({'success': False, 'message': 'Nepareizs lietotājvārds vai parole!'})
+        
+        return jsonify({'success': False, 'message': 'Nepareizs lietotājvārds vai parole!'})
 
 @app.route('/logout')
 def logout():
