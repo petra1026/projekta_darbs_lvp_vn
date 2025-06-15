@@ -1,29 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <!-- Pogas -->
-    <div class="container">
-        <div class="row text-center nav-buttons mt-5">
-            <div class="col-md-3 col-sm-6 mb-2">
-                <a href="index.html" class="btn btn-success btn-lg">Sākums</a>
-            </div>
-            <div class="col-md-3 col-sm-6 mb-2">
-                <a href="morfologija.html" class="btn btn-success btn-lg">Morfoloģija</a>
-            </div>
-            <div class="col-md-3 col-sm-6 mb-2">
-                <a href="sintakse.html" class="btn btn-success btn-lg">Sintakse</a>
-            </div>
-            <div class="col-md-3 col-sm-6 mb-2">
-                <a href="leksikologija.html" class="btn btn-success btn-lg active">Leksikoloģija</a>
-            </div>
-            {% if session.get('user_id') %}
-                <div class="col-md-3 col-sm-6 mb-2">
-                    <a href="{{ url_for('pieraksti') }}" class="btn btn-warning btn-lg">Pieraksti</a>
-                </div>
-            {% endif %}
-        </div>
-    </div>
-
+ 
     <!-- Leksikoloģijas saturs -->
     <div class="container">
         <div class="row m-5">
