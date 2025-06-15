@@ -66,3 +66,15 @@ document.getElementById("registerForm").addEventListener("submit", async functio
         alert("Kļūda:" + error.message);
     }
 });
+
+//Search funkcija
+function searchInPage() {
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const elements = document.querySelectorAll("p, li");
+
+    elements.forEach(el => {
+        const text = el.textContent.toLowerCase();
+        el.style.backgroundColor = text.includes(input) ? "yellow" : "";
+    });
+}
+

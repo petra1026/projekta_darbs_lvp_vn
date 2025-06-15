@@ -70,6 +70,13 @@ def register():
 
     return jsonify({'success': True, 'message': 'Reģistrācija veiksmīga!'})
 
+@app.route('/pieraksti')
+def pieraksti():
+    if 'user_id' not in session:
+        return redirect(url_for('index'))
+    return render_template('pieraksti.html')
+
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
