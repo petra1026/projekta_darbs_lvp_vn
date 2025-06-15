@@ -64,7 +64,7 @@ body {
   
 /* Aktīvās pogas stils */
 .btn.active {
-  background-color: #145c32 !important; /* tumši zaļa */
+  background-color: #145c32 !important; 
   border-color: #145c32 !important;
   color: white !important;
 }
