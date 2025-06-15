@@ -39,10 +39,11 @@
                         <div class="col-md-3 col-sm-6 mb-2">
                             <a href="leksikologija.html" class="btn btn-success btn-lg">Leksikoloģija</a>
                         </div>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+                        {% if session.get('user_id') %}
+                            <div class="col-md-3 col-sm-6 mb-2">
+                                <a href="{{ url_for('pieraksti') }}" class="btn btn-warning btn-lg">Pieraksti</a>
+                            </div>
+                        {% endif %}
+                    </div>
+            
 {% endblock %}
