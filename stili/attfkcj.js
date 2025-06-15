@@ -13,35 +13,35 @@ function showLoginForm() {
     document.getElementById("loginForm").style.display = "block"
 }
 
-//Ielogošanās
-document.getElementById("registerForm"). 
-addEventListener("submit", async (e)) ;{
-    e.preventDefault()
+// Ielogošanās 
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("registerForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
 
-    const username = document.getElementById("username").value 
-    const password = document.getElementById("password").value 
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
 
-    try {
-        const response = await fetch("/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({username, password}),
-        })
+        try {
+            const response = await fetch("/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ username, password }),
+            });
 
-        const data = await response.json()
+            const data = await response.json();
 
-        if (data.success) {
-            location.reload()
-        } 
-        else {
-            alert(data.message)
+            if (data.success) {
+                location.reload();
+            } else {
+                alert(data.message);
+            }
+        } catch (error) {
+            alert("Kļūda: " + error.message);
         }
-        } catch (error){
-            alert("Kļūda:" + error.message)
-        }
-    }
+    });
+});
 
 // Reģistrācija
 document.getElementById("registerForm").addEventListener("submit", async (e)) ;{
