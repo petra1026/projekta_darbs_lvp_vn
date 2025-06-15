@@ -62,10 +62,11 @@ body {
     }
   }
   
-  /* Aktīvās pogas stils */
-  .btn.active {
-    background-color: #1b1987 !important;
-    border-color: #1b1987 !important;
-    color: white !important;
-  }
+/* Aktīvās pogas stils */
+.btn.active {
+  background-color: #145c32 !important; /* tumši zaļa */
+  border-color: #145c32 !important;
+  color: white !important;
+}
+
   
