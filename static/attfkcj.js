@@ -105,15 +105,27 @@ document.getElementById("registerForm").addEventListener("submit", async functio
 const originalContent = new Map()
 
 function searchInPage() {
-  const query = document.getElementById("searchInput").value.toLowerCase().trim()
+  const searchInput = document.getElementById("searchInput")
+  if (!searchInput) {
+    console.log("Search input nav atrasts") 
+    return
+  }
+
+  const query = searchInput.value.toLowerCase().trim()
   const elements = document.querySelectorAll("p, li, h4, h5, h6")
 
+  console.log(`Meklē: '${query}', Elementi: ${elements.length}`) 
+
   elements.forEach((el) => {
+    // Saglabā oriģinālo saturu
     if (!originalContent.has(el)) {
       originalContent.set(el, el.innerHTML)
     }
+
+    // Atjauno oriģinālo saturu
     el.innerHTML = originalContent.get(el)
 
+    // Izceļ tekstu
     if (query) {
       const text = el.textContent.toLowerCase()
       if (text.includes(query)) {
@@ -132,10 +144,12 @@ function escapeRegExp(string) {
 
 // Pierakstu funckija
 function saveNotes() {
-    const content = document.getElementById("notesArea").value;
-    localStorage.setItem("userNotes", content);
-    alert("Pieraksti saglabāti!");
-}
+  const textarea = document.getElementById("notesArea")
+  if (!textarea) {
+    console.log("Textarea nav atrasta") 
+    alert("Kļūda: Nevar atrast pierakstu lauku!")
+    return
+  }
 
 //Ielādē saglabātos pierakstus
 window.addEventListener("DOMContentLoaded", () => {
