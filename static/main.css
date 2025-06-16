@@ -39,12 +39,12 @@ body {
   }
   
   table th {
-    background-color: #4880ef;
+    background-color: #b3d8ff ;
   }
   
   /* Krāsu stili */
   .bg-success-light {
-    background-color: #4880ef;
+    background-color: #b3d8ff;
   }
   
   /* Galveno pogu stils */
@@ -125,4 +125,18 @@ body {
   color: white !important;
 }
 
-  
+
+/* Sintakses laukumu krāsa */
+.alert-success {
+    background-color: #e0f0ff !important;  
+    color: #000 !important;              
+    border-color: #b3d8ff !important;
+}
+
+.text-success {
+    color: #134d87 !important; 
+}
+
+.text-primary {
+    color: #0a9253 !important; 
+}

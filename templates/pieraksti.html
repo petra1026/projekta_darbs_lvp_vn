@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container mt-5">
-    <h3>Tavi pieraksti</h3>
-    <textarea class="form-control" rows="15" placeholder="Raksti šeit savus pierakstus..."></textarea>
+    <h3 class="text-center mb-4">Tavi pieraksti</h3>
+    <form>
+        <textarea id="notesArea" class="form-control" rows="10" placeholder="Raksti savas piezīmes šeit..."></textarea>
+        <button type="button" class="btn btn-success mt-3" onclick="saveNotes()">Saglabāt</button>
+    </form>
 </div>
 {% endblock %}
