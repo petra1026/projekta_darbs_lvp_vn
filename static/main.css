@@ -39,24 +39,38 @@ body {
   }
   
   table th {
-    background-color: darkseagreen;
+    background-color: #4880ef;
   }
   
   /* Krāsu stili */
   .bg-success-light {
-    background-color: rgba(15, 13, 119, 0.623);
+    background-color: #4880ef;
   }
   
   /* Galveno pogu stils */
   .btn-success {
-      background-color: #001f3f;
-      border-color: #001f3f;
+      background-color: #003366;
+      border-color: #003366;
       color: white;
   }
 
   .btn-success:hover {
     background-color: #003366;
     border-color: #003366;
+  }
+
+  /* Log in pogas krāsa */
+
+  .btn-primary {
+    background-color: #003366;  
+    border-color: #003366;
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: #001f3f;  
+    border-color: #001f3f;
+    color: white;
   }
 
   /* Pogu alternatīvs tonis */
@@ -106,8 +120,8 @@ body {
 
 /* Aktīvās pogas stils */
 .btn.active {
-  background-color: #003366 !important; 
-  border-color: #003366 !important;
+  background-color: #001f3f !important; 
+  border-color: #001f3f !important;
   color: white !important;
 }
 
