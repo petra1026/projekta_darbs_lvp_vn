@@ -19,10 +19,21 @@ function showLoginForm() {
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const username = document.getElementById("regUsername").value;
-    const password = document.getElementById("regPassword").value;
+    console.log("=== LOGIN MĒĢINĀJUMS ===")
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    console.log(`Lietotājvārds: '${username}', Parole garums: ${password.length}`)
+
+    if (!username || !password) {
+    alert("Lūdzu ievadiet gan lietotājvārdu, gan paroli!")
+    return
+    }
 
     try {
+        console.log("Sūta pieprasījumu uz serveri...")
+
         const response = await fetch("/login", {
             method: "POST",
             headers: {
@@ -32,13 +43,22 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
             credentials: "include"
         });
 
+        console.log(`Response status: ${response.status}`)
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`)
+        }
+
         const data = await response.json();
+        console.log("Saņemta atbilde:", data)
         alert(data.message);
 
         if (data.success) {
+            console.log("Login veiksmīgs, pārlādē lapu...")
             location.reload();
         }
     } catch (error) {
+        console.error("Login kļūda:", error)
         alert("Kļūda:" + error.message);
     }
 });
@@ -47,8 +67,17 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 document.getElementById("registerForm").addEventListener("submit", async function (e) {
     e.preventDefault();
 
+    console.log("=== REĢISTRĀCIJAS MĒĢINĀJUMS ===")
+
     const username = document.getElementById("regUsername").value;
     const password = document.getElementById("regPassword").value;
+
+    console.log(`Reģistrē: '${username}', Parole garums: ${password.length}`)
+
+    if (!username || !password) {
+        alert("Lūdzu ievadiet gan lietotājvārdu, gan paroli!")
+        return
+    }
 
     try {
         const response = await fetch("/register", {
@@ -60,12 +89,14 @@ document.getElementById("registerForm").addEventListener("submit", async functio
         });
 
         const data = await response.json();
+        console.log("Reģistrācijas atbilde:", data)
         alert(data.message);
 
         if (data.success) {
-            location.reload();
+            showLoginForm();
         }
     } catch (error) {
+        console.error("Reģistrācijas kļūda:", error)
         alert("Kļūda:" + error.message);
     }
 });
