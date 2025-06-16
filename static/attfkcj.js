@@ -151,16 +151,39 @@ function saveNotes() {
     return
   }
 
+  const content = textarea.value
+  console.log(`Saglabā pierakstus: ${content.length} simboli`) 
+
+  localStorage.setItem("userNotes", content)
+  alert("Pieraksti saglabāti!")
+}
+
 //Ielādē saglabātos pierakstus
 window.addEventListener("DOMContentLoaded", () => {
-    const textarea = document.getElementById("notesArea");
-    if (textarea) {
-        const saved = localStorage.getItem("userNotes");
-        if (saved) {
-            textarea.value = saved;
-        }
+  console.log("DOM ielādēts") 
+
+  const textarea = document.getElementById("notesArea")
+  if (textarea) {
+    const saved = localStorage.getItem("userNotes")
+    if (saved) {
+      textarea.value = saved
+      console.log(`Ielādēti pieraksti: ${saved.length} simboli`) 
     }
-});
+  }
+})
+
+//Sesijas pārbaude
+async function checkSession() {
+  try {
+    const response = await fetch("/check_session")
+    const data = await response.json()
+    console.log("Session status:", data)
+    return data.logged_in
+  } catch (error) {
+    console.error("Session check error:", error)
+    return false
+  }
+}
 
 // Notīra meklēšanas rezultātus, kad lietotājs atstāj lapu
 window.addEventListener("beforeunload", () => {
