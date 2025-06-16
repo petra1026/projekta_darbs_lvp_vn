@@ -23,10 +23,12 @@
     <div class="col text-end mt-2 me-3">
         {% if not session.get('user_id') %}
             <button class="btn btn-primary" onclick="showLoginModal()">Ieiet</button>
+            <small class="text-muted d-block">Debug: Nav ielogojies</small>
         {% else %}
             <span class="me-2">Sveicināts, {{ session.username }}!</span>
             <a href="{{ url_for('notes') }}" class="btn btn-warning me-2">Pieraksti</a>
             <a href="{{ url_for('logout') }}" class="btn btn-secondary">Izrakstīties</a>
+            <small class="text-muted d-block">Debug: Ielogojies kā {{ session.username }} (ID: {{ session.user_id }})</small>
         {% endif %}
     </div>
 
@@ -47,16 +49,16 @@
                 <div class="modal-body">
                     <!-- Login forma -->
                     <form id="loginForm">
-                        <input type="text" id="username" placeholder="Lietotājvārds" class="form-control mb-2" required />
-                        <input type="password" id="password" placeholder="Parole" class="form-control mb-2" required />
+                        <input type="text" id="username" placeholder="Lietotājvārds" class="form-control mb-2" required autocomplete="username"/>
+                        <input type="password" id="password" placeholder="Parole" class="form-control mb-2" required autocomplete="current-password"/>
                         <button type="submit" class="btn btn-success">Ielogoties</button>
                         <button type="button" class="btn btn-link" onclick="showRegisterform()">Reģistrēties</button>
                     </form>
 
                     <!-- Reģistrācijas forma -->
                     <form id="registerForm" style="display:none;">
-                        <input type="text" id="regUsername" placeholder="Jauns lietotājvārds" class="form-control mb-2" required />
-                        <input type="password" id="regPassword" placeholder="Parole" class="form-control mb-2" required />
+                        <input type="text" id="regUsername" placeholder="Jauns lietotājvārds" class="form-control mb-2" required autocomplete="username"/>
+                        <input type="password" id="regPassword" placeholder="Parole" class="form-control mb-2" required autocomplete="new-password"/>
                         <button type="submit" class="btn btn-primary">Reģistrēties</button>
                         <button type="button" class="btn btn-link" onclick="showLoginForm()">Atpakaļ</button>
                     </form>
