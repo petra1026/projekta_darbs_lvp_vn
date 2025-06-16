@@ -62,6 +62,19 @@ body {
     }
   }
   
+/* Fiksētās pogas apakšā (sākuma lapā) */
+.fixed-bottom {
+    z-index: 1030;
+    background-color: #f8f9fa;
+    border-top: 1px solid #ccc;
+}
+
+body {
+    background-color: rgb(255, 237, 214);
+    padding-bottom: 80px; /* pielāgot fiksēto pogu augstumam */
+}
+
+
 /* Aktīvās pogas stils */
 .btn.active {
   background-color: #145c32 !important; 

@@ -21,19 +21,20 @@ document.getElementById("registerForm").addEventListener("submit", async functio
     const password = document.getElementById("regPassword").value;
 
     try {
-        const response = await fetch("/register", {
+        const response = await fetch("/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({ username, password }),
+            credentials: "include"
         });
 
         const data = await response.json();
         alert(data.message);
 
         if (data.success) {
-            showLoginForm();
+            location.reload();
         }
     } catch (error) {
         alert("Kļūda:" + error.message);
@@ -60,7 +61,7 @@ document.getElementById("registerForm").addEventListener("submit", async functio
         alert(data.message);
 
         if (data.success) {
-            showLoginForm();
+            location.reload();
         }
     } catch (error) {
         alert("Kļūda:" + error.message);
@@ -69,12 +70,15 @@ document.getElementById("registerForm").addEventListener("submit", async functio
 
 //Search funkcija
 function searchInPage() {
-    const input = document.getElementById("searchInput").value.toLowerCase();
-    const elements = document.querySelectorAll("p, li");
+    const query = document.getElementById("searchInput").value.toLowerCase();
+    const elements = document.querySelectorAll("p, li, h4, h5, h6");
 
     elements.forEach(el => {
-        const text = el.textContent.toLowerCase();
-        el.style.backgroundColor = text.includes(input) ? "yellow" : "";
+        // Atjauno sākotnējo saturu
+        const original = el.textContent;
+        el.innerHTML = original.replace(
+            new RegExp(`(${query})`, 'gi'),
+            '<mark>$1</mark>'
+        );
     });
 }
-

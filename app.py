@@ -36,19 +36,19 @@ def leksikologija():
 
 @app.route('/login', methods=['POST'])
 def login():
-    username = request.json.get('username')
-    password = request.json.get('password')
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+    user = get_user_by_username(username)
 
-    user = User.query.filter_by(username=username).first()
-
-    if user and check_password_hash(user.password_hash, password):
-        session['user_id'] = user.id
-        session['username'] = user.username
-        session['is_editor'] = user.is_editor
-        return jsonify({'success': True, 'message': 'Sekmīgi ielogojāties!'})
-        
-    return jsonify({'success': False, 'message': 'Nepareizs lietotājvārds vai parole!'})
-
+    if user and user[2] == password:
+        session['user_id'] = user[0]
+        session['username'] = user[1]
+        return jsonify({"success": True, "message": "Ielogošanās veiksmīga!"})
+    else:
+        return jsonify({"success": False, "message": "Nepareizs lietotājvārds vai parole."})
+    
+    
 @app.route('/logout')
 def logout():
     session.clear()
